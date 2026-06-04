@@ -1,0 +1,113 @@
+{
+  "header": {
+    "name": "Maya Iyer",
+    "tagline": "Backend & Platform Engineer",
+    "subtagline": "Payments infrastructure, distributed systems, and developer tooling",
+    "current_role": "Senior Software Engineer",
+    "location": "Bengaluru, India",
+    "email": "maya.iyer.dev@example.com",
+    "phone": "+91-90000-00000",
+    "photo": "assets/photo.jpg",
+    "photo_placeholder": true,
+    "theme": { "accent": "#38BDF8", "accent_dim": "#0EA5E9", "accent_print": "0369A1" },
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/example-maya", "provenance": "verified" },
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/example-maya/", "provenance": "verified" }
+    ]
+  },
+  "summary": "Senior Software Engineer who builds and runs payment-platform services at scale. I own services end to end, from API design through on-call, and I care most about latency and clear failure modes. I cut our checkout **p99 by 45%** and I like turning flaky systems into boring ones.",
+  "highlights": [
+    { "stat": "45%", "label": "checkout p99 latency cut" },
+    { "stat": "99.98%", "label": "payments uptime" },
+    { "stat": "12B+", "label": "events processed / day" },
+    { "stat": "30 \u2192 4 min", "label": "deploy time" }
+  ],
+  "skills": [
+    { "group": "Languages", "items": ["Go", "Python", "Java", "SQL", "Bash"] },
+    { "group": "Backend", "items": ["gRPC", "Kafka", "PostgreSQL", "Redis", "Elasticsearch", "REST APIs"] },
+    { "group": "Cloud & Infra", "items": ["AWS", "Kubernetes", "Terraform", "Docker", "Linux"] },
+    { "group": "Observability", "items": ["Prometheus", "Grafana", "OpenTelemetry", "Distributed tracing"] },
+    { "group": "Practices", "items": ["System design", "Distributed systems", "CI/CD", "Code review", "On-call"] }
+  ],
+  "experience": [
+    {
+      "company": "FinPay",
+      "role": "Senior Software Engineer",
+      "start": "Jan 2021",
+      "end": "Present",
+      "location": "Bengaluru, India",
+      "type": "primary",
+      "summary": "I own the checkout and settlement services that move money for millions of users, from API design through production on-call.",
+      "bullets": [
+        "Rebuilt the settlement service in Go and cut **p99 latency** from 820ms to 450ms, a **45%** drop, with batched writes and a read-through Redis cache.",
+        "Designed a **Kafka** event pipeline that now carries **12B+** events a day with at-least-once delivery and idempotent consumers.",
+        "Took payments uptime to **99.98%** with circuit breakers, bulkheads, and a chaos test suite that runs in CI.",
+        "Cut deploy time from 30 minutes to 4 after I split the monolith build and parallelized the test stage.",
+        "Mentored 4 engineers and ran the design-review process, which lifted our first-pass approval rate to **80%**."
+      ],
+      "awards": ["Engineering Excellence Award 2023 \u2014 FinPay"],
+      "tags": ["Go", "Kafka", "Redis", "PostgreSQL", "Kubernetes", "AWS", "gRPC", "observability"]
+    },
+    {
+      "company": "Nimbus Cloud",
+      "role": "Software Engineer",
+      "start": "Jul 2018",
+      "end": "Dec 2020",
+      "location": "Bengaluru, India",
+      "type": "primary",
+      "summary": "Worked on the metrics platform that the rest of engineering used to watch their services.",
+      "bullets": [
+        "Built the metrics ingestion API in Java and scaled it to **2M** writes per second with backpressure and sharded storage.",
+        "Shipped a self-serve dashboard builder that **300+** internal teams adopted in its first quarter.",
+        "Reduced storage cost by **38%** with a tiered retention policy and column compression."
+      ],
+      "awards": ["Hackathon Winner 2019 \u2014 Nimbus Cloud"],
+      "tags": ["Java", "Elasticsearch", "AWS", "Terraform"]
+    },
+    {
+      "company": "Adhoc Labs",
+      "role": "Engineering Intern",
+      "start": "May 2017",
+      "end": "Jul 2017",
+      "location": "Pune, India",
+      "type": "oneliner",
+      "summary": "Built an internal log-search tool in Python that saved the support team about 200 hours a quarter."
+    }
+  ],
+  "projects": [
+    {
+      "name": "OpenTrace",
+      "subtitle": "Distributed tracing toolkit",
+      "role": "Maintainer",
+      "period": "2022 - Present",
+      "blurb": "An open-source OpenTelemetry helper that **1.2k+** GitHub stars and a dozen contributors now use.",
+      "bullets": [
+        "Cut trace overhead to under **2%** with tail sampling and async export.",
+        "Added drop-in adapters for Go, Python, and Java so teams ship tracing in an afternoon."
+      ],
+      "links": [{ "label": "GitHub", "url": "https://github.com/example-maya/opentrace" }],
+      "tags": ["Go", "OpenTelemetry", "gRPC"]
+    },
+    {
+      "name": "Ledger Bench",
+      "subtitle": "Database benchmark suite",
+      "role": "Author",
+      "period": "2021",
+      "onepage": "oneline",
+      "blurb": "A benchmark suite for double-entry ledgers that compares 6 databases on one identical workload.",
+      "tags": ["Python", "PostgreSQL", "Benchmarking"]
+    }
+  ],
+  "workshop": {
+    "title": "Designing for Failure",
+    "audience": "180+ engineers",
+    "blurb": "An internal talk on circuit breakers, backpressure, and why boring systems win."
+  },
+  "education": [
+    { "school": "BITS Pilani", "degree": "B.E. Computer Science", "year": "2017", "note": "GPA 9.1 / 10" }
+  ],
+  "certifications": [
+    { "name": "AWS Certified Solutions Architect \u2013 Associate", "year": "2020" },
+    { "name": "Certified Kubernetes Administrator (CKA)", "year": "2021" }
+  ]
+}

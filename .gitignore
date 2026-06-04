@@ -1,0 +1,22 @@
+# Generated resume outputs (regenerate from profile.json)
+output/
+**/output/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.synctex.gz
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/

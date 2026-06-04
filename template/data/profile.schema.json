@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EZ-CV profile",
+  "description": "Single source of truth for one person's resume. Every renderer reads this file. Edit it, re-run the build scripts, and all outputs update.",
+  "type": "object",
+  "required": ["header", "summary", "skills", "experience"],
+  "properties": {
+    "header": {
+      "type": "object",
+      "required": ["name", "tagline", "current_role", "location", "email"],
+      "properties": {
+        "name": { "type": "string", "description": "Full name; drives slug, monogram, and AI id." },
+        "tagline": { "type": "string", "description": "Short headline, e.g. 'Backend & Platform Engineer'." },
+        "subtagline": { "type": "string", "description": "Optional second line under the tagline." },
+        "current_role": { "type": "string" },
+        "location": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string", "description": "Omitted from --public HTML builds." },
+        "photo": { "type": "string", "description": "Relative path, e.g. assets/photo.jpg." },
+        "photo_placeholder": { "type": "boolean", "description": "Show the monogram fallback until a real photo exists." },
+        "handle": { "type": "string", "description": "Override the terminal prompt handle (default <first>@dev)." },
+        "monogram": { "type": "string", "description": "Override the 2-letter monogram (default initials)." },
+        "role_slug": { "type": "string", "description": "Override the whoami role slug (default slug of current_role)." },
+        "ai_id": { "type": "string", "description": "Override the AI assistant id in the AI theme (default <first>-1.0)." },
+        "theme": {
+          "type": "object",
+          "description": "Optional accent override for the terminal/PDF theme.",
+          "properties": {
+            "accent": { "type": "string", "description": "Hex, e.g. #22C55E." },
+            "accent_dim": { "type": "string", "description": "Hex, darker accent for borders/hovers." },
+            "accent_print": { "type": "string", "description": "Hex (no #) for LaTeX section rules." }
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "url"],
+            "properties": {
+              "label": { "type": "string" },
+              "url": { "type": "string" },
+              "provenance": { "type": "string", "enum": ["verified", "estimate", "placeholder"] }
+            }
+          }
+        }
+      }
+    },
+    "summary": { "type": "string", "description": "2-5 sentence pitch in first person. Wrap key terms in **double asterisks** to bold them; numeric metrics auto-bold." },
+    "highlights": {
+      "type": "array",
+      "description": "Slim stat row shown on the HTML themes only (omitted from ATS Markdown/LaTeX). Keep to ~4.",
+      "items": {
+        "type": "object",
+        "required": ["stat", "label"],
+        "properties": { "stat": { "type": "string" }, "label": { "type": "string" } }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["group", "items"],
+        "properties": {
+          "group": { "type": "string" },
+          "items": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "experience": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["company", "role", "start", "end", "type"],
+        "properties": {
+          "company": { "type": "string" },
+          "role": { "type": "string" },
+          "start": { "type": "string" },
+          "end": { "type": "string" },
+          "location": { "type": "string" },
+          "type": { "type": "string", "enum": ["primary", "collapsed", "oneliner"], "description": "primary = bullets; collapsed = paragraph; oneliner = summary only." },
+          "summary": { "type": "string", "description": "Lead-in sentence for primary roles; the whole entry for oneliner." },
+          "bullets": { "type": "array", "items": { "type": "string" }, "description": "Quantified, reverse-chron achievements. Never end a bullet on a word ending in -ing." },
+          "paragraph": { "type": "string", "description": "Used when type=collapsed." },
+          "paragraph_short": { "type": "string", "description": "One-line variant of paragraph used on the one-pager." },
+          "awards": { "type": "array", "items": { "type": "string" }, "description": "Rendered as an Awards line on the entry that earned them." },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "onepage": { "type": "string", "enum": ["drop"], "description": "Optional: drop this entry on the one-page variant." }
+        }
+      }
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "subtitle": { "type": "string" },
+          "role": { "type": "string" },
+          "period": { "type": "string" },
+          "blurb": { "type": "string" },
+          "bullets": { "type": "array", "items": { "type": "string" } },
+          "subprojects": {
+            "type": "array",
+            "items": { "type": "object", "properties": { "name": { "type": "string" }, "desc": { "type": "string" } } }
+          },
+          "links": { "type": "array", "items": { "type": "object", "properties": { "label": { "type": "string" }, "url": { "type": "string" } } } },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "onepage": { "type": "string", "enum": ["drop", "oneline"], "description": "Optional: drop or collapse to one line on the one-pager." }
+        }
+      }
+    },
+    "workshop": {
+      "type": "object",
+      "description": "Optional speaking/teaching entry.",
+      "properties": { "title": { "type": "string" }, "audience": { "type": "string" }, "blurb": { "type": "string" } }
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["school", "degree", "year"],
+        "properties": { "school": { "type": "string" }, "degree": { "type": "string" }, "year": { "type": "string" }, "note": { "type": "string" } }
+      }
+    },
+    "certifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "year"],
+        "properties": { "name": { "type": "string" }, "year": { "type": "string" } }
+      }
+    }
+  }
+}
