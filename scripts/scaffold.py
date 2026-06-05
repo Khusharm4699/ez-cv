@@ -56,6 +56,10 @@ def render_all(dest):
       ["build_html.py", "--public"],
       ["build_html_ai.py"],
       ["build_html_ai.py", "--public"],
+      ["build_html_editorial.py"],
+      ["build_html_editorial.py", "--public"],
+      ["build_html_sidebar.py"],
+      ["build_html_sidebar.py", "--public"],
       ["build_text.py"],
       ["build_text.py", "--compact"],
   ]

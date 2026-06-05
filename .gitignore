@@ -15,6 +15,9 @@ venv/
 *.out
 *.synctex.gz
 
+# Promo drafts (kept local, not part of the project)
+MEDIUM_POST.md
+
 # OS / editor
 .DS_Store
 *.swp

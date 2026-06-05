@@ -4,7 +4,8 @@ description: >
   Interview-driven resume builder that turns a conversation into a personalized,
   reusable resume-generation skill. EZ-CV asks one question at a time until it has
   enough verified detail, then scaffolds a private per-user skill that renders a
-  terminal-themed HTML resume, an AI-assistant one-pager, ATS-clean Markdown, and
+  choice of four HTML resume styles (terminal, AI-assistant, editorial, sidebar),
+  ATS-clean Markdown, and
   LaTeX/PDF — full and one-page — with humanized prose and automatic keyword/metric
   bolding. Use when the user says "build my resume", "ez-cv", "make me a resume",
   "resume from scratch", "I need a resume", or "set up my resume skill".
@@ -22,8 +23,10 @@ Salient features it delivers to the end user:
   standard headings, quantified bullets).
 - **Humanized prose** — a deterministic AI-fingerprint scan that must pass before
   anything is called done.
-- **A new kind of HTML resume** — a scrolling terminal-themed page plus an
-  AI-assistant chat-UI one-pager, both self-contained.
+- **Four HTML resume styles**, all self-contained from one `profile.json`:
+  a scrolling **terminal** theme (dark/OLED), an **AI-assistant** chat-UI one-pager,
+  a light print-grade **editorial** theme, and a modern two-column **sidebar** theme.
+  Pick whichever fits the role; the data never changes.
 - **One source of truth** — edit `profile.json`, re-run, and all outputs update.
 
 ## When to Use
@@ -78,8 +81,9 @@ Trigger when the user says: "build my resume", "ez-cv", "make me a resume",
 
 ### Phase 5 — Render, verify, hand off
 1. Build all formats (the scaffold did the first pass; re-run after edits):
-   `build_html.py`, `build_html.py --compact`, `build_html_ai.py`, `build_text.py`,
-   `build_text.py --compact`.
+   `build_html.py` (terminal), `build_html_ai.py` (AI), `build_html_editorial.py`
+   (editorial), `build_html_sidebar.py` (sidebar) — each also takes `--compact` and
+   `--public` — plus `build_text.py` and `build_text.py --compact`.
 2. PDF: `cd output && tectonic <slug>_resume.tex` (and the `_onepage` one). Confirm the
    one-pager is exactly one page before sharing.
 3. Open the outputs for the user. Tell them: edit `profile.json`, re-run, done.
