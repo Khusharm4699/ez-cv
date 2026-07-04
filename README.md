@@ -157,4 +157,4 @@ Keep the renderers deterministic and dependency-free.
 
 ## License
 
-[MIT](LICENSE) © Khush Sharma
+[MIT](LICENSE) © [Khush Sharma](https://github.com/Khusharm4699)
